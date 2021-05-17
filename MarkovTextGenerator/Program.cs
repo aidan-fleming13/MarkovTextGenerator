@@ -15,9 +15,9 @@ namespace MarkovTextGenerator
 
             Console.WriteLine("Welcome to Marky Markov's Random Text Generator!");
 
-            Console.WriteLine("Enter some text I can learn from (enter single ! to finish): ");
+            Console.WriteLine("Enter some text I can learn from (enter a period(!) to finish): ");
 
-            // LoadText("Sample.txt", chain);
+            //LoadText("Sample.txt", chain);
 
             while (true)
             {
@@ -35,13 +35,16 @@ namespace MarkovTextGenerator
             chain.UpdateProbabilities();
 
             // Okay now for the fun part
-            Console.WriteLine("Done learning!  Now give me a word and I'll tell you what comes next.");
+            Console.WriteLine("Done learning!  Now give me a word and I'll generate a sentence.");
             Console.Write("> ");
+            String word = chain.startingwords[0];
+            Console.WriteLine(chain.GenerateSentence(word));
 
-            String word = Console.ReadLine();
-            String nextWord = chain.GetNextWord(word);
-            Console.WriteLine("I predict the next word will be " + nextWord);
+            String word2 = Console.ReadLine();
+            String nextWord3 = chain.GetNextWord(word);
+            Console.WriteLine("I predict the next word will be " + nextWord3);
         }
+
 
         static void LoadText(string filename, Chain chain)
         {
